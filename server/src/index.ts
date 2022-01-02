@@ -5,7 +5,7 @@ import cookieSession from 'cookie-session';
 import { AppRouter } from './AppRouter';
 import './controllers/rootController';
 import './controllers/LoginController';
-
+import { LoginController } from './controllers/LoginController';
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));

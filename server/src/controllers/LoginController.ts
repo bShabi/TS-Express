@@ -1,14 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
-import { controller,get,use,bodyValidtor, post } from './decorators';
+import { controller, get, use, bodyValidtor, post } from './decorators';
 
 // function loger(req:Request,res:Response,next: NextFunction) {
-//   console.log("Request is made") 
+//   console.log("Request is made")
 //   next()
 // }
 
-
 @controller('/auth')
-class LoginController {
+export class LoginController {
   @get('/login')
   // @use(loger)
   getLogin(req: Request, res: Response): void {
@@ -28,14 +27,11 @@ class LoginController {
   }
 
   @post('/login')
-  @bodyValidtor('email','password')
+  @bodyValidtor('email', 'password')
   postLogin(req: Request, res: Response) {
     const { email, password } = req.body;
-  
-    if (
-      email === 'benshabi@outlook.com' &&
-      password === '123456'
-    ) {
+
+    if (email === 'benshabi@outlook.com' && password === '123456') {
       //  mark this person logged in
       req.session = { IsLogged: true };
       //  redirect them on the root  route
@@ -46,8 +42,8 @@ class LoginController {
   }
 
   @get('/logout')
-  getLogout(req:Request,res:Response){
-    req.session = undefined
-    res.redirect('/')
+  getLogout(req: Request, res: Response) {
+    req.session = undefined;
+    res.redirect('/');
   }
 }

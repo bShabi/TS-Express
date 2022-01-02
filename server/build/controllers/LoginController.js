@@ -9,9 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LoginController = void 0;
 var decorators_1 = require("./decorators");
 // function loger(req:Request,res:Response,next: NextFunction) {
-//   console.log("Request is made") 
+//   console.log("Request is made")
 //   next()
 // }
 var LoginController = /** @class */ (function () {
@@ -23,8 +24,7 @@ var LoginController = /** @class */ (function () {
     };
     LoginController.prototype.postLogin = function (req, res) {
         var _a = req.body, email = _a.email, password = _a.password;
-        if (email === 'benshabi@outlook.com' &&
-            password === '123456') {
+        if (email === 'benshabi@outlook.com' && password === '123456') {
             //  mark this person logged in
             req.session = { IsLogged: true };
             //  redirect them on the root  route
@@ -62,3 +62,4 @@ var LoginController = /** @class */ (function () {
     ], LoginController);
     return LoginController;
 }());
+exports.LoginController = LoginController;
