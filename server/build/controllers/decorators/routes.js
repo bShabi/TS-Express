@@ -12,6 +12,7 @@ function routerBinder(method) {
         };
     };
 }
+//Rest api for route
 exports.get = routerBinder(methods_1.Methods.get);
 exports.post = routerBinder(methods_1.Methods.post);
 exports.put = routerBinder(methods_1.Methods.put);

@@ -15,50 +15,50 @@ function requireAuth(req:Request,res:Response,next: NextFunction):void {
 
 const router = Router();
 
-router.post('/login', (req: RequestWithBody, res: Response) => {
-  const { email, password } = req.body;
+// router.post('/login', (req: RequestWithBody, res: Response) => {
+//   const { email, password } = req.body;
 
-  if (
-    email &&
-    password &&
-    email === 'benshabi@outlook.com' &&
-    password === '123456'
-  ) {
-    //  mark this person logged in
-    req.session = { IsLogged: true };
-    //  redirect them on the root  route
-    res.redirect('/');
-  } else {
-    res.send(`invalid email or password`);
-  }
-});
+//   if (
+//     email &&
+//     password &&
+//     email === 'benshabi@outlook.com' &&
+//     password === '123456'
+//   ) {
+//     //  mark this person logged in
+//     req.session = { IsLogged: true };
+//     //  redirect them on the root  route
+//     res.redirect('/');
+//   } else {
+//     res.send(`invalid email or password`);
+//   }
+// });
 
-router.get('/',(req: Request,res:Response) => {
-    if(req.session && req.session.IsLogged) {
-        res.send(`
-        <div>
-            <div>
-                Are you logged in
-                <a href="/logout">Logout</a>
-            </div>
-        </div>
-        `)
-    }else {
-        res.send(`
-        <div>
-            <div>
-                Are you not logged in
-                <a href="/login">Login</a>
-            </div>
-        </div>
-        `)
-    }
+// router.get('/',(req: Request,res:Response) => {
+//     if(req.session && req.session.IsLogged) {
+//         res.send(`
+//         <div>
+//             <div>
+//                 Are you logged in
+//                 <a href="/logout">Logout</a>
+//             </div>
+//         </div>
+//         `)
+//     }else {
+//         res.send(`
+//         <div>
+//             <div>
+//                 Are you not logged in
+//                 <a href="/login">Login</a>
+//             </div>
+//         </div>
+//         `)
+//     }
     
-} )
-router.get('/logout',(req:Request,res:Response) => {
-  req.session = undefined
-  res.redirect('/')
-})
+// } )
+// router.get('/logout',(req:Request,res:Response) => {
+//   req.session = undefined
+//   res.redirect('/')
+// })
 router.get('/protected',requireAuth,(req:Request,res:Response) => {
   res.send(`
     <div>
